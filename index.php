@@ -7,31 +7,36 @@ if (mysqli_num_rows($result)  > 0) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $tbody .= "
         <div class='col'>
-            <div class='card m-3' style='width: 22rem; height:14rem;'>
-                <div class='row g-0'>
-                    <div class='col-md-4'>
-                        <img src='pictures/" . $row['picture'] . "'alt='" . $row['title'] . "'>
-                    </div>
-                    <div class='col-md-8'>
-                        <div class='card-header'>
-                            <h5 class='card-title'>" . $row['title'] . "</h5>
-                        </div>
-                        <div class='card-body'>
-                            <p class='card-text'>Written by " . $row['author_first_name'] . " " . $row['author_last_name'] . "</p>
-                            <p class='card-text'><small class='text-muted'>". $row['publisher_name'] . "</small></p>
-                        </div>
-                        <div class='card-footer'>
-                            <tr>
-                                <td><a href='details.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Read more</button></a>
-                                <td><a href='update.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
-                                <td><a href='delete.php?id=" . $row['id'] . "'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a></td>
-                            </tr>
-                        </div>
-                    </div>
+            <div class='card m-3' style='width: 22rem;'>
+                <div class='row g-0'>";
+
+        if ($row['avail'] == 1)
+            $tbody .= "<p class='h5 text-center bg-success'>AVAILABLE</p>";
+        else
+            $tbody .= "<p class='h5 text-center bg-danger'>RESERVED</p>";
+        $tbody .= "
+            <div class='col-md-4'>
+                <img src='pictures/" . $row['picture'] . "'alt='" . $row['title'] . "'>
+            </div>
+            <div class='col-md-8'>
+                <div class='card-header'>
+                    <h5 class='card-title'>" . $row['title'] . "</h5>
+                </div>
+                <div class='card-body'>
+                    <p class='card-text'>" . $row['pType'] . "</p>
+                    <p class='card-text'>Written by " . $row['author_first_name'] . " " . $row['author_last_name'] . "</p>
+                </div>
+                <div class='card-footer'>
+                    <tr>
+                        <td><a href='details.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Read more</button></a>
+                        <td><a href='update.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
+                        <td><a href='delete.php?id=" . $row['id'] . "'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a></td>
+                    </tr>
                 </div>
             </div>
-        </div>
- ";
+            </div>
+            </div>
+            </div>";
     };
 } else {
     $tbody =  "<tr><td colspan='5'><center>No Data Available </center></td></tr>";
@@ -62,10 +67,10 @@ mysqli_close($connect);
             <p class="h2">
                 Books
             </p>
-            <a href= "create.php"><button class='btn btn-primary'type="button" >Add Book</button></a>
+            <a href="create.php"><button class='btn btn-primary' type="button">Add Book</button></a>
         </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-        <?= $tbody;?>
+            <?= $tbody; ?>
         </div>
         </div>
     </main>

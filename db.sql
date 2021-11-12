@@ -10,7 +10,8 @@ CREATE TABLE book(
    picture VARCHAR(50),
    title VARCHAR(50),
    ISBN VARCHAR(50),
-   descript VARCHAR(250),
+   short_descript VARCHAR(250),
+   full_descript TEXT,
    pType VARCHAR(10),
    author_first_name VARCHAR(50),
    author_last_name VARCHAR(50),
@@ -24,12 +25,20 @@ CREATE TABLE book(
 
 INSERT INTO book
 VALUES
-(1, "alchemist.jpeg", "The Alchemist", "978-0-06-235530-0", "A Fable About Following Your Dream.", "Book", "Paulo", "Coelho", "Harper Torch", "195 Broadway,
+(1, "alchemist.jpeg", "The Alchemist", "978-0-06-235530-0", "An international Bestseller.", "Book", "Paulo", "Coelho", "Harper Torch", "195 Broadway,
 New York City, New York, U.S.", "1988-01-01", true),
-(2, "lostime.jpg", "In Search of Lost Time", "9782291082538", "In Search of Lost Time: volumes 1 to 7", "Book", "Marcel", "Proust", "Slash Books", "","2019-12-30", true),
-(3, "secret.jpg", "The Secret", "978-3442337903", "This book is based on the earlier film of the same name.", "Book", "Rhonda", "Byrne", "Arkana", "Hainbundstr. 17, 37085 Göttingen, Germany", "2007-04-10", false),
+(2,),
+(3,),
 (4, "kyba.jpg", "The Kybalion", "978-1721791361", 'The essence of the teachings of Hermes Trismegistus.', "CD", "Konrad", "Halver", "Aurinia", "Bramfelder Str. 102A,
-22305 Hamburg, Germany", "2018-06-23", false);
+22305 Hamburg, Germany", "2018-06-23", false),
+(5, "secret.jpg", "The Secret", "978-3442337903", "This book is based on the earlier film of the same name.", "Book", "Rhonda", "Byrne", "Arkana", "Hainbundstr. 17, 37085 Göttingen, Germany", "2007-04-10", false),
+(6,)
+(7, "lostime.jpg", "In Search of Lost Time", "9782291082538", "In Search of Lost Time: volumes 1 to 7", "Book", "Marcel", "Proust", "Slash Books", "","2019-12-30", true)
+(8,),
+(9,),
+(10,),
+(11,),
+(12,);
 
 
 
