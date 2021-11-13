@@ -3,20 +3,28 @@ require_once 'db_connect.php';
 require_once 'file_upload.php';
 
 if ($_POST) {   
-    $name = $_POST['name'];
-    $price = $_POST['price'];
+    $title = $_POST['title'];
+    $picture = $_POST['picture'];
+    $ISBN = $_POST['ISBN'];
+    $short = $_POST['short_descript'];
+    $type = $_POST['pType'];
+    $name1 = $_POST['author_first_name'];
+    $name2 = $_POST['author_last_name'];
+    $publisher = $_POST['publisher_name'];
+    $adress = $_POST['publisher_adress'];
+    $date = $_POST['publish_date'];
     $uploadError = '';
     //this function exists in the service file upload.
     $picture = file_upload($_FILES['picture']);  
    
-    $sql = "INSERT INTO products (name, price, picture) VALUES ('$name', $price, '$picture->fileName')";
+    $sql = "INSERT INTO book(title, picture, ISBN, descript, pType, author_first_name, author_last_name, publisher_name, publisher_adress, publish_date)  VALUES ( '$title', '$picture->fileName', '$ISBN', '$short', '$type', '$name1', '$name2', '$publisher', '$adress', '$date')";
 
     if (mysqli_query($connect, $sql) === true) {
         $class = "success";
         $message = "The entry below was successfully created <br>
             <table class='table w-50'><tr>
-            <td> $name </td>
-            <td> $price </td>
+            <td> $title </td>
+            <td> $short </td>
             </tr></table><hr>";
         $uploadError = ($picture->error !=0)? $picture->ErrorMessage :'';
     } else {

@@ -18,11 +18,11 @@
     <main class="bg-gradient-secondary">
         <fieldset>
             <legend class='h2'>Add Book</legend>
-            <form action="actions/a_create.php" method="post" enctype="multipart/form-data">
+            <form action="actions/a_create.php" method="POST" enctype="multipart/form-data">
                 <table class='table'>
                     <tr>
                         <th>Picture</th>
-                        <td><input class='form-control' type="file" name="picture" /></td>
+                        <td><input class='form-control' type="text" name="picture" placeholder= "Image URL"/></td>
                     </tr>
                     <tr>
                         <th>Title</th>

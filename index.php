@@ -16,7 +16,7 @@ if (mysqli_num_rows($result)  > 0) {
             $tbody .= "<p class='h5 text-center bg-danger'>RESERVED</p>";
         $tbody .= "
             <div class='col-md-4'>
-                <img src='pictures/" . $row['picture'] . "'alt='" . $row['title'] . "'>
+                <img src='url(" . $row['picture'] . ") 'alt='" . $row['title'] . "'>
             </div>
             <div class='col-md-8'>
                 <div class='card-header'>
