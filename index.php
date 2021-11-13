@@ -29,7 +29,7 @@ if (mysqli_num_rows($result)  > 0) {
                 <div class='card-footer'>
                     <tr>
                         <td><a href='details.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Read more</button></a>
-                        <td><a href='update.php?id=" . $row['id'] . "'><button class='btn btn-primary btn-sm' type='button'>Edit</button></a>
+                        <td><a href='update.php?id=" . $row['id'] . "'><button class='btn btn-success btn-sm' type='button'>Edit</button></a>
                         <td><a href='delete.php?id=" . $row['id'] . "'><button class='btn btn-danger btn-sm' type='button'>Delete</button></a></td>
                     </tr>
                 </div>

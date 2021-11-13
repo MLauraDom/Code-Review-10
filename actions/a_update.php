@@ -20,9 +20,9 @@ if ($_POST) {
     $picture = file_upload($_FILES['picture']);//file_upload() called  
     if($picture->error===0){
         ($_POST["picture"]=="product.png")?: unlink("../pictures/$_POST[picture]");       
-        $sql = "UPDATE book SET title = '$title', picture = '$picture->fileName', ISBN = '$ISBN', short_description = '$short', pType = '$type', author_first_name = '$name1', author_last_name = '$name2', publisher_name = '$publisher', publisher_adress = '$adress', publish_date = $date, avail = '$avail' WHERE id = {$id}";
+        $sql = "UPDATE book SET title = '$title', picture = '$picture->fileName', ISBN = '$ISBN', descript = '$short', pType = '$type', author_first_name = '$name1', author_last_name = '$name2', publisher_name = '$publisher', publisher_adress = '$adress', publish_date = '$date', avail = '$avail' WHERE id = {$id}";
     }else{
-        $sql = "UPDATE book SET title = '$title', ISBN = '$ISBN', short_description = '$short', pType = '$type', author_first_name = '$name1', author_last_name = '$name2', publisher_name = '$publisher', publisher_adress = '$adress', publish_date = $date, avail = '$avail' WHERE id = {$id}";
+        $sql = "UPDATE book SET title = '$title', ISBN = '$ISBN', descript = '$short', pType = '$type', author_first_name = '$name1', author_last_name = '$name2', publisher_name = '$publisher', publisher_adress = '$adress', publish_date = '$date', avail = '$avail' WHERE id = {$id}";
     }
     if (mysqli_query($connect, $sql) === TRUE) {
         $class = "success";
