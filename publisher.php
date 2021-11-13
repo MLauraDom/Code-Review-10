@@ -72,9 +72,9 @@ mysqli_close($connect);
     </header>
     <main class="container p-3">
         <div class="p-3 hed">
-            <p class="h2">
-                Books
-            </p>
+            <a class="h2 btn btn-primary" href="index.php">
+                Home
+</a>
             <a href="create.php"><button class='btn btn-primary' type="button">Add Book</button></a>
         </div>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">

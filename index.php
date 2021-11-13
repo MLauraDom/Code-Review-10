@@ -1,8 +1,9 @@
 <?php
-require_once 'actions/db_connect.php';
+require 'actions/db_connect.php';
 $sql = "SELECT * FROM book";
 $result = mysqli_query($connect, $sql);
-$tbody = ''; //this variable will hold the body for the table
+$pbody = '';
+$tbody = '';
 if (mysqli_num_rows($result)  > 0) {
     while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
         $tbody .= "
@@ -37,6 +38,8 @@ if (mysqli_num_rows($result)  > 0) {
             </div>
             </div>
             </div>";
+        $pbody .= "<li class='nav-item'>
+        <a class='nav-link active'  href='publisher.php?id=" . $row['id'] . "'>" . $row['publisher_name'] . "</a></li>";
     };
 } else {
     $tbody =  "<tr><td colspan='5'><center>No Data Available </center></td></tr>";
@@ -63,12 +66,21 @@ mysqli_close($connect);
         </div>
     </header>
     <main class="container p-3">
-        <div class="p-3 hed">
-            <p class="h2">
-                Books
-            </p>
-            <a href="create.php"><button class='btn btn-primary' type="button">Add Book</button></a>
-        </div>
+        <a href="create.php"><button class='btn btn-primary' type="button">Add Book</button></a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Publishers</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+
+                        <?= $pbody; ?>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
             <?= $tbody; ?>
         </div>
@@ -78,5 +90,6 @@ mysqli_close($connect);
         <p class="h4 text-center text-white">Made by <a href="#">&#x24B8Laura Moldovan</a></p>
     </footer>
 </body>
+
 
 </html>
