@@ -52,3 +52,8 @@ fieldset {
     margin-top: 100px;
     width: 60%;
 }
+
+.img-thumbnail {
+    width: 70px !important;
+    height: 70px !important;
+}

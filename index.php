@@ -56,7 +56,7 @@ mysqli_close($connect);
     <link rel="stylesheet" type='text/css' href="css/style.css" />
 </head>
 
-<body>
+<body class="bg-light">
     <header>
         <div class="m-auto">
             <p class="h1 text-white text-center title">Big Library</p>
