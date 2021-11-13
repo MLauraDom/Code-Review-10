@@ -1,20 +1,27 @@
 <?php
-require_once 'actions/db_connect.php';
-$sql = "SELECT * FROM book";
-$result = mysqli_query($connect, $sql);
-$tbody = ''; //this variable will hold the body for the table
-if (mysqli_num_rows($result)  > 0) {
-    while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-        $tbody .= "
+require 'actions/db_connect.php';
+
+if ($_GET['id']) {
+    $id = $_GET['id'];
+    $sql1 = "SELECT * FROM book WHERE id = {$id}";
+    $result1 = mysqli_query($connect, $sql1);
+    $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
+    $publisher = $row1['publisher_name'];
+    $sql = "SELECT * FROM book WHERE publisher_name = '{$publisher}'";
+    $result = mysqli_query($connect, $sql);
+    $tbody = ''; //this variable will hold the body for the table
+    if (mysqli_num_rows($result)  > 0) {
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $tbody .= "
         <div class='col'>
             <div class='card m-3' style='width: 22rem;'>
                 <div class='row g-0'>";
 
-        if ($row['avail'] == 1)
-            $tbody .= "<p class='h5 text-center bg-success'>AVAILABLE</p>";
-        else
-            $tbody .= "<p class='h5 text-center bg-danger'>RESERVED</p>";
-        $tbody .= "
+            if ($row['avail'] == 1)
+                $tbody .= "<p class='h5 text-center bg-success'>AVAILABLE</p>";
+            else
+                $tbody .= "<p class='h5 text-center bg-danger'>RESERVED</p>";
+            $tbody .= "
             <div class='col-md-4'>
                 <img src='pictures/" . $row['picture'] . "'alt='" . $row['title'] . "'>
             </div>
@@ -37,7 +44,8 @@ if (mysqli_num_rows($result)  > 0) {
             </div>
             </div>
             </div>";
-    };
+        };
+    }
 } else {
     $tbody =  "<tr><td colspan='5'><center>No Data Available </center></td></tr>";
 }

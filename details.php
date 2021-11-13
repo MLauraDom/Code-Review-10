@@ -64,7 +64,7 @@ if ($_GET['id']) {
                         <p class='card-text'><b><?php echo $type ?></b></p>
                         <p class='card-text'><i>Written by <?php echo $name1 . " " . $name2 ?></i></p>
                         <p class='card-text'><?php echo $short ?></p>
-                        <p class='card-text'>Published by <?php echo $publisher ?> on <?php echo $date ?></p>
+                        <p class='card-text'>Published by  <a href='publisher.php?id=<?php echo $id ?>'><?php echo $publisher ?></a> on <?php echo $date ?></p>
                         <p class='card-text'>Adress: <?php echo $adress ?></p>
                     
                     </div>

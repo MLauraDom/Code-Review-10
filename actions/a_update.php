@@ -2,9 +2,9 @@
 require_once 'db_connect.php';
 require_once 'file_upload.php';
 
-if ($_POST) {    
+if ($_POST) {
+    $id = $_POST['id'];
     $title = $_POST['title'];
-    $picture = $_POST['picture'];
     $ISBN = $_POST['ISBN'];
     $short = $_POST['short_descript'];
     $type = $_POST['pType'];
@@ -13,16 +13,17 @@ if ($_POST) {
     $publisher = $_POST['publisher_name'];
     $adress = $_POST['publisher_adress'];
     $date = $_POST['publish_date'];
+    $avail = $_POST['avail'];
     //variable for upload pictures errors is initialized
     $uploadError = '';
-
+    
     $picture = file_upload($_FILES['picture']);//file_upload() called  
     if($picture->error===0){
-        ($_POST["picture"]=="product.png")?: unlink("../pictures/$_POST[picture]");           
-        $sql = "UPDATE book SET title = '$title', picture = '$picture->fileName', ISBN = '$ISBN', short_description = '$short', pType = '$type', author_first_name = '$name1', author_last_name = '$name2', publisher_name = '$publisher', publisher_adress = '$adress', publish_date = $date, avail = true WHERE id = {$id}";
+        ($_POST["picture"]=="product.png")?: unlink("../pictures/$_POST[picture]");       
+        $sql = "UPDATE book SET title = '$title', picture = '$picture->fileName', ISBN = '$ISBN', short_description = '$short', pType = '$type', author_first_name = '$name1', author_last_name = '$name2', publisher_name = '$publisher', publisher_adress = '$adress', publish_date = $date, avail = '$avail' WHERE id = {$id}";
     }else{
-        $sql = "UPDATE book SET name = '$name', price = $price WHERE id = {$id}";
-    }    
+        $sql = "UPDATE book SET title = '$title', ISBN = '$ISBN', short_description = '$short', pType = '$type', author_first_name = '$name1', author_last_name = '$name2', publisher_name = '$publisher', publisher_adress = '$adress', publish_date = $date, avail = '$avail' WHERE id = {$id}";
+    }
     if (mysqli_query($connect, $sql) === TRUE) {
         $class = "success";
         $message = "The record was successfully updated";

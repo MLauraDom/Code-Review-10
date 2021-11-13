@@ -22,7 +22,7 @@
                 <table class='table'>
                     <tr>
                         <th>Picture</th>
-                        <td><input class='form-control' type="text" name="picture" placeholder= "Image URL"/></td>
+                        <td><input class='form-control' type="file" name="picture" value="<?php echo $data['picture'] ?>" /></td>
                     </tr>
                     <tr>
                         <th>Title</th>

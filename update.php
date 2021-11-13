@@ -48,7 +48,7 @@ if ($_GET['id']) {
             <table class="table">
                 <tr>
                     <th>Picture</th>
-                    <td><input class='form-control' type="file" name="picture" value="<?php echo $data['picture'] ?>" /></td>
+                    <td><input class='form-control' type="file" name="picture"/></td>
                 </tr>
                 <tr>
                     <th>Title</th>
@@ -87,9 +87,37 @@ if ($_GET['id']) {
                     <th>Publish date</th>
                     <td><input class='form-control' type="date" name="publish_date" value="<?php echo $date ?>" /></td>
                 </tr>
-                <td><button class="btn btn-success" type="submit">Save Changes</button></td>
-                <td><a href="index.php"><button class="btn btn-primary" type="button">Back</button></a></td>
+                <tr>
+                    <th>Available in Store</th>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="avail" id="flexRadioDefault1" value="<?php echo $avail ?>" checked>
+                            <label class="form-check-label" for="flexRadioDefault1">
+                                <?php
+                                if ($avail = 1)
+                                    echo "YES";
+                                else
+                                    echo "NO"; ?>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="avail" id="flexRadioDefault2" value="<?php echo !$avail ?>">
+                            <label class="form-check-label" for="flexRadioDefault2">
+                                <?php
+                                if ($avail = 1)
+                                    echo "NO";
+                                else
+                                    echo "YES"; ?>
+                            </label>
+                        </div>
+                    </td>
                 </tr>
+                <tr>
+                        <input type= "hidden" name= "id" value= "<?php echo $data['id'] ?>" />
+                        <input type= "hidden" name= "picture" value= "<?php echo $data['picture'] ?>" />
+                        <td><button class="btn btn-success" type= "submit">Save Changes</button></td>
+                        <td><a href= "index.php"><button class="btn btn-primary" type="button">Back</button></a></td>
+                    </tr>
             </table>
         </form>
     </main>
